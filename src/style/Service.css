@@ -1,0 +1,83 @@
+ /* css reset */
+
+html{
+    scroll-behavior: smooth;
+}
+:root{
+    --navbar-height:59px:
+}
+
+ 
+
+  #book::before{
+    width: 100%;
+    content: " ";
+    position: absolute;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('../images/bg.jpg') no-repeat center center/cover;
+    height: 100vh; 
+    top: 0px;
+    left: 0px;
+    
+    z-index: -1; 
+    opacity: 0.7; 
+   }
+   #book{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    height: 593px;
+    align-items: center center; 
+    text-align: center;
+}
+.row{
+    margin: 20px;
+}
+
+
+#profile{
+    width: 400px;
+    text-align: center;
+    margin: auto;
+    color: white;
+   
+}
+#profile ul{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: -1;
+
+}
+#profile ul li{
+    background-color:white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    list-style-type: none;
+    color: black;
+   
+}
+
+#book .nextBtn{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 100px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+/* Media query for small screens */
+@media only screen and (max-width: 600px) {
+    #book::before {
+        height: 100vh; /* Adjusted height for smaller screens */
+    }
+
+    #profile {
+        width: 100%; /* Adjusted width to fit smaller screens */
+    }
+
+    #profile ul {
+        width: 100%; /* Adjusted width to fit smaller screens */
+    }
+}
