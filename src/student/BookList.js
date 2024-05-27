@@ -29,7 +29,11 @@ const BookList = () => {
      const callApiBookList = async () => {
     try {
     const url= process.env.REACT_APP_API_URL + 'books/booklist';
-      const response = await axios.get(url);
+    const response = await axios.get(url,{
+      headers: {
+        authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+      },
+    });
       setBookList(response.data);
     }
     catch (error) {
@@ -42,7 +46,7 @@ const BookList = () => {
   }, [])
 
   // for get book
-  const [updateData, setUpdateData] = useState({
+  const [bookData, setBookData] = useState({
     bookname: '',
     author: '',
   });
@@ -54,7 +58,11 @@ const BookList = () => {
       };
     const url = process.env.REACT_APP_API_URL + 'getbook/addgetbook';
     try {
-      const response = await axios.post(url, dataToSend);
+      const response = await axios.post(url, dataToSend,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
       successNotify();
 
     } catch (error) {
@@ -67,7 +75,11 @@ const BookList = () => {
   const getBookByid = async (id) => {
     const url= process.env.REACT_APP_API_URL + 'books/book/' + id;
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
     return response.data;
     } catch (error) {
       return userId;
@@ -105,7 +117,7 @@ const BookList = () => {
           
           const { bookname, author, _id } = bookData;
           const { name, email} = userData;
-          setUpdateData({
+          setBookData({
             bookname: bookname,
             author: author, 
             bookID : _id
@@ -119,7 +131,7 @@ const BookList = () => {
         setShow(true);
       };
   const handleGetBook = () => {
-    handleSubmit(updateData,userData);
+    handleSubmit(bookData,userData);
     setShow(false);
   };
 

@@ -21,11 +21,6 @@ const ApppointGetBook = () => {
     const [getBookList, setGetBookList] = useState([]);
     
     const [check, setCheck] = useState(true);
-    // const [selectedUsername, setSelectedUsername] = useState('');
-    // const [selectedName, setSelectedName] = useState('');
-    // const [selectedAssignment, setSelectedAssignment] = useState('');
-    // const [filteredAssignmentAnswerList, setFilteredAssignmentAnswerList] = useState([]);
-    // const [selectedTaskAnswer, setSelectedTaskAnswer] = useState('');
     
     const callApiGetBookList = async () => {
         
@@ -34,7 +29,10 @@ const ApppointGetBook = () => {
             const response = await axios.get(url, {
                 params: {
                     status: check ? 1 : 0
-                }
+                },
+                headers: {
+                    authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+                  },
             });
             setGetBookList(response.data);
         } catch (err) {
@@ -60,8 +58,12 @@ const ApppointGetBook = () => {
             
             const url = process.env.REACT_APP_API_URL + 'getbook/approvegetbook/' +id;
             const response = await axios.put(url,{
-             status: 1
-            })
+                status: 1
+               }, {
+                 headers: {
+                   authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+                 },
+               });
             successNotify();
             callApiGetBookList();
         } catch (err) {
@@ -75,8 +77,12 @@ const ApppointGetBook = () => {
             
             const url = process.env.REACT_APP_API_URL + 'getbook/removebook/' +id;
             const response = await axios.put(url,{
-             status: 0
-            })
+                status: 0
+               }, {
+                 headers: {
+                   authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+                 },
+               });
         } catch (err) {
             console.log(err);
         }
@@ -101,120 +107,6 @@ const ApppointGetBook = () => {
       }
       
 
-    // const handleUsernameFilterChange = (e) => {
-    //     const selectedUsername= e.target.value;
-    //     setSelectedUsername(selectedUsername);
-    //     setSelectedName('')
-    // };
-    // const handleNameFilterChange = (e) => {
-    //     const selectedName = e.target.value;
-    //     setSelectedName(selectedName);
-    //     setSelectedUsername('')
-    // };
-
-    // const handleAssignmentFilterChange = (e) => {
-    //     const selectedAssignment = e.target.value;
-    //     setSelectedAssignment(selectedAssignment);
-    // };
-
-//     useEffect(() => {
-//     const filteredList = assignmentAnswerList.filter(item => {
-//         const userFilter = selectedUsername === '' || item.username === selectedUsername;
-//         const nameFilter = selectedName === '' || item.name === selectedName;
-//         const assignmentFilter = selectedAssignment === '' || item.taskname === selectedAssignment;
-
-//         return userFilter && nameFilter && assignmentFilter;
-//     });
-
-//     setFilteredAssignmentAnswerList(filteredList);
-// }, [assignmentAnswerList, selectedUsername, selectedName, selectedAssignment]);
-
-
-    // const getUsernameOptions = () => {
-       
-    //     const uniqueUsernames = new Set();
-    //     assignmentAnswerList.forEach((user) => {
-    //         uniqueUsernames.add(user.username);
-    //     });
-    //     const uniqueUsernamesArray = Array.from(uniqueUsernames);
-    
-    //     if (uniqueUsernamesArray.length === 0) {
-    //         return (
-    //             <option value="">Loading Users...</option>
-    //         );
-    //     } else {
-    //         return uniqueUsernamesArray.map((username) => (
-    //             <option key={username} value={username} style={{ fontWeight: selectedUsername === username ? 'bold' : 'normal', }}>
-    //                 {username}
-    //             </option>
-    //         ));
-    //     }
-    // }
-    // const getNameOptions = () => {
-       
-    //     const uniqueNames = new Set();
-    //     assignmentAnswerList.forEach((user) => {
-    //         uniqueNames.add(user.name);
-    //     });
-    //     const uniqueNamesArray = Array.from(uniqueNames);
-    
-    //     if (uniqueNamesArray.length === 0) {
-    //         return (
-    //             <option value="">Loading Users...</option>
-    //         );
-    //     } else {
-    //         return uniqueNamesArray.map((uname) => (
-    //             <option key={uname} value={uname} style={{ fontWeight: selectedName === uname ? 'bold' : 'normal', }}>
-    //                 {uname}
-    //             </option>
-    //         ));
-    //     }
-    // }
-    // const getAssignmentOptions = () => {
-        
-    //     const uniqueTaskNames = new Set();
-
-    //     assignmentAnswerList.forEach((assignment) => {
-    //         uniqueTaskNames.add(assignment.taskname);
-    //     });
-    
-    //     const uniqueTaskNamesArray = Array.from(uniqueTaskNames);
-    
-    //     if (uniqueTaskNamesArray.length === 0) {
-    //         return (
-    //             <option value="">Loading Assignments...</option>
-    //         );
-    //     } else {
-    //         return uniqueTaskNamesArray.map((taskname) => (
-    //             <option key={taskname} value={taskname} style={{ fontWeight: selectedAssignment === taskname ? 'bold' : 'normal' }}>
-    //                 {taskname}
-    //             </option>
-    //         ));
-    //     }
-    // }
-    
-    // const clearFilters = () => {
-    //     setSelectedUsername('');
-    //     setSelectedName('');
-    //     setSelectedAssignment('');
-    // }
-   
-    
-    //   const handleSubmit = async (values) => {
-    //     try {
-    //         const url = process.env.REACT_APP_API_URL + 'leaderboard/marksforTaskSubmission';
-    //         const response = await axios.post(url, values);
-    //         if(response.status===200){
-    //             successNotify();
-    //         }
-    //         else{
-    //             errNotify();
-    //         }
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    //    setShow(false);
-    //   };
     return (
         <div>
             <h1>Get Book List</h1>
@@ -227,31 +119,12 @@ const ApppointGetBook = () => {
                         onChange={handleCheckboxChange} 
                     />
                 </label>
-                {/* <button onClick={clearFilters} className="btn btn-primary" style={{ marginLeft: '50px' }} >Clear Filters</button> */}
 
             </div>
             <table className='table table-striped' >
                 <thead>
                     <tr>
                         <th>Sr No</th>
-                        {/* <th>
-                            <select value={selectedUsername} onChange={handleUsernameFilterChange} >
-                                <option value="" style={{ fontWeight: 'bold' }}>User Name</option>
-                                {getUsernameOptions()}
-                            </select>
-                        </th>
-                        <th>
-                            <select value={selectedName} onChange={handleNameFilterChange} >
-                                <option value="" style={{ fontWeight: 'bold' }}>Name</option>
-                                {getNameOptions()}
-                            </select>
-                        </th>
-                        <th>
-                            <select value={selectedAssignment} onChange={handleAssignmentFilterChange}  >
-                                <option value="" style={{ fontWeight: 'bold' }}>Assignment Name</option>
-                                {getAssignmentOptions()}
-                            </select>
-                        </th> */}
                         <th>Book Name</th>
                         <th>Author</th>
                         <th>Student Name</th>

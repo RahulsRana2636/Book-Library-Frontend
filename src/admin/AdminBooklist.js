@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,6 @@ const notifydata = {
 const successNotify = () => toast.success("Book deleted Successfully!", notifydata);
 const errNotify = () => toast.error("Book not deleted!", notifydata);
 const AdminBooklist = () => {
-    const navigate = useNavigate();
     const formatDate = (dateString) => {
       return format(new Date(dateString), 'dd.MM.yyyy');
     };
@@ -27,7 +26,11 @@ const AdminBooklist = () => {
      const callApiBookList = async () => {
     try {
       const url = process.env.REACT_APP_API_URL + 'books/booklist';
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
       setBookList(response.data);
     }
     catch (error) {
@@ -41,13 +44,23 @@ const AdminBooklist = () => {
 
   // this api for delete a book from booklist
   const deleteBook = async (id) => { 
+    try{
     if (id) {
       const url = process.env.REACT_APP_API_URL + 'books//deletebook/' + id;
-      const response = await axios.delete(url);
+      const response = await axios.delete(url,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
       successNotify();
     } else {
       errNotify();
     }
+  }
+  catch(err){
+    console.log(err);
+    errNotify();
+  }
     callApiBookList();
   }
   const [deleteId, setDeleteId] = useState("");

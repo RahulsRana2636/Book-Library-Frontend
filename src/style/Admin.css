@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .navbars{
+    margin-left : 3px;
+}
+}
+/* nav{
+    padding-left: 250px;
+} */
+.navbars{
+    padding-left: 250px;
+}

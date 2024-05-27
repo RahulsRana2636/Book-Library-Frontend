@@ -1,24 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
-    return (
-        <>
-            <div class="clearfix"></div>
+  return (
+    <footer className="main-footer">
+      <strong>Copyright &copy; BookStore. </strong> All rights reserved. 
+      <div className="float-right d-none d-sm-inline-block">
+        Developed by BookStore
+      </div>
+    </footer>
+  );
+};
 
-            <footer class="site-footer">
-                <div class="footer-inner bg-white">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            Copyright &copy; BookStore
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            Developed by BookStore
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </>
-    )
-}
-
-export default Footer
+export default Footer;

@@ -110,18 +110,18 @@ html{
     font-size: 65px;
 }
 
-nav .fas{
+nav .lfas{
     display: none;
 }
 @media only screen and (max-width: 600px){
    
-    nav .fas{
+    nav .lfas{
         margin-right: 15px;
         display: block;
         font-size: 25px;
         color: white;
     }
-    nav ul{
+    nav .ul{
         background: #ff004f;
         position: fixed;
         top: 0;
@@ -135,11 +135,11 @@ nav .fas{
         transition: right 0.5s;
     
     }
-    nav ul li{
+    nav ul .li{
         display: block;
         margin: 25px;
     }
-    nav ul .fas{
+    nav ul .lfas{
         position: absolute;
         top: 25px;
         left: 25px;

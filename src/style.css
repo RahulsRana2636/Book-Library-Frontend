@@ -840,18 +840,8 @@ aside.left-panel {
         /* float: left; */
         padding: 1.875em;
         width: 100%;
-        min-height: 84vh;
+        min-height: 100vh;
     }
-    footer.site-footer {
-      padding: 0 1.875em;
-  }
-  footer.site-footer .footer-inner {
-    color: #78909c;
-    font-family: 'Open Sans';
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 2.45em 1.125em;
-}
 .text-right {
   text-align: right !important;
 }

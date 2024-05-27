@@ -13,7 +13,11 @@ const SubmitBookList = () => {
      const callSubmitBookList = async () => {
     try {
       const url = process.env.REACT_APP_API_URL + 'getbook/submitbooklist/' + userId;
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
       setBookList(response.data);
     }
     catch (error) {

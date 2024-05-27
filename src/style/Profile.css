@@ -1,35 +1,47 @@
 /* Profile.css */
 
 .row h1 {
-    color: black;
-    margin: 20px;
-  } 
-  
-  #profilestudent {
-    width: 400px;
-    margin: auto;
-  }
-  
-  #profilestudent ul {
-    width: 100%;
-    padding: 0;
-    list-style-type: none;
+  color: black;
+  margin: 20px;
+} 
+
+#profilestudent {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+#profilestudent ul {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+
+#profilestudent ul li {
+  background-color: white;
+  padding: 10px 20px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+#profilestudent ul li:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#profilestudent ul li:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .row h1 {
+    font-size: 24px;
+    margin: 10px;
   }
   
   #profilestudent ul li {
-    background-color: white;
-    padding: 10px 20px;
-    border: 1px solid black;
-    margin-bottom: 10px;
+    padding: 8px 16px;
   }
-  
-  #profilestudent ul li:first-child {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  
-  #profilestudent ul li:last-child {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  
+}

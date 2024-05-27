@@ -16,6 +16,15 @@ h2 {
   text-align: center;
 }
 
+/* Add this to your CSS file */
+
+.nav-link p { /* Example active background color */
+  color: #ffffff !important; /* Ensures the text color is white */
+}
+
+.nav-link.active p{
+  color: #ffffff !important; 
+}
 
 .form input[type="text"],
 input[type="email"],
@@ -58,7 +67,6 @@ input[type="password"]:focus {
   padding: 10px;
   position: fixed;
   top: 0;
-  width: 100%;
   height: 60px;
   z-index: 1000;
 }
@@ -78,11 +86,6 @@ input[type="password"]:focus {
 }
 
 
-/* .modal {
-  display: block !important;
-  background: rgba(100, 100, 100, 0.8);
-} */
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -99,60 +102,3 @@ code {
   }
 }
 
-/* .secureheader {
-  min-height: 5vh;
-  max-height: 5vh;
-}
-
-.securefooter {
-  min-height: 5vh;
-  max-height: 5vh;
-}
-
-.maincontent {
-  min-height: 90vh;
-  max-height: 90vh;
-}
-
-.loading {
-  position: absolute;
-  top: 40%;
-  left: 40%;
-}
-
-.loading img {
-  width: 20%;
-  height: auto;
-}
-
-.scrollContent {
-  overflow: auto;
-  height: 90vh;
-}
-
-.content {
-  min-height: 84vh;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
-.float-right {
-  float: right !important;
-}
-
-.float-left {
-  float: left !important;
-} */
-
-.modal {
-  display: block !important;
-  background: rgba(100, 100, 100, 0.8);
-}
-
-.modal-dialog {
-  width: 60% !important;
-  margin: 20vh 20% !important;
-  max-width: 60% !important;
-}

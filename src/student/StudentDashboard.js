@@ -35,7 +35,7 @@ const StudentDashboard = () => {
 
         <div class="row">
           <div class="col-sm-6 col-lg-6">
-            <Link to={`/profile/${userId}`} className='link-success'>
+            <Link to={`/profile/${userdetails._id}`} className='link-success'>
               <div class="card text-white bg-flat-color-1">
                 <div class="card-body">
                   <div class="card-left pt-1 float-left">

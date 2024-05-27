@@ -29,7 +29,12 @@ const BookAdd = () => {
       const response = await axios.post(url, {
         bookname,
         author,    
-      });
+      }
+      ,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      })
       successNotify();
       setTimeout(() => {
         navigate('/booklist');

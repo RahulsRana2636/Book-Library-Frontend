@@ -33,7 +33,11 @@ const BookUpdate = () => {
   const callBookUpdateApi = async (data) => {
     try {
       const url = process.env.REACT_APP_API_URL + 'books/updatebook/'+ id;
-      const response = await axios.put(url, data);
+      const response = await axios.put(url ,data,{
+          headers: {
+            authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+          },
+        });
       successNotify();
       setTimeout(() => {
         navigate('/booklist');
@@ -47,7 +51,11 @@ const BookUpdate = () => {
   const getBookByid = async (id) => {
     const url = process.env.REACT_APP_API_URL + 'books/book/' + id;
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url,{
+        headers: {
+          authtoken: `Bearer ${localStorage.getItem('token')}`, // Set the Authorization header with the token
+        },
+      });
       return response.data;
     } catch (error) {
       return userDataInitialState;
