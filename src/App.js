@@ -76,7 +76,7 @@ function App() {
             isLoggedIn && (
               <>
                 <SideBar />
-                <div className="content-wrapper">
+                <div className="content-wrapper r-content">
                   <Routes>
                     <Route path="/admindashboard" element={<Dashboard />} />
                     <Route path="/booklist" element={<AdminBooklist />} />

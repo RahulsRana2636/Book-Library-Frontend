@@ -90,7 +90,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.r-content{
+  padding-left: 20px;
+}
 
 @keyframes App-logo-spin {
   from {
